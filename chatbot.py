@@ -3928,16 +3928,11 @@ class AdvancedChatbot:
                 'client_id': client_id
             })
 
-def main():
-    # Set console encoding to UTF-8
-    if sys.platform.startswith('win'):
-        sys.stdout.reconfigure(encoding='utf-8')
-        sys.stdin.reconfigure(encoding='utf-8')
-    
-    import os
-    port = int(os.environ.get("PORT", 10000))
-    chatbot = AdvancedChatbot()
-    chatbot.socketio.run(chatbot.app, host="0.0.0.0", port=port)
+# Expose app for Gunicorn/Render
+chatbot = AdvancedChatbot()
+app = chatbot.app
 
 if __name__ == "__main__":
-    main() 
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    chatbot.socketio.run(chatbot.app, host="0.0.0.0", port=port) 
