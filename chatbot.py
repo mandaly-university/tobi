@@ -127,7 +127,7 @@ class AdvancedChatbot:
         CORS(self.app)  # Enable CORS for all routes
         
         # Initialize SocketIO
-        self.socketio = SocketIO(self.app, cors_allowed_origins="*")
+        self.socketio = SocketIO(self.app, cors_allowed_origins="*", async_mode="eventlet")
         
         # Add real-time communication
         self._realtime = {
