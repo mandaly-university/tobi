@@ -3934,29 +3934,10 @@ def main():
         sys.stdout.reconfigure(encoding='utf-8')
         sys.stdin.reconfigure(encoding='utf-8')
     
+    import os
+    port = int(os.environ.get("PORT", 10000))
     chatbot = AdvancedChatbot()
-    
-    print("SimpleBot: မင်္ဂလာပါ! ကျွန်တော်/ကျွန်မက SimpleBot ပါ။ သင့်ကိုတွေ့ရတာ ပျော်ရွှင်ပါတယ်။ 😊")
-    print(f"SimpleBot: ကျွန်တော်/ကျွန်မကို {chatbot.creator} က ဖန်တီးထားပါတယ်။ သူဟာ {chatbot.creator_title} ဖြစ်ပါတယ်။ 😊")
-    print(f"SimpleBot: ကျွန်တော်/ကျွန်မကို {chatbot.creation_date} ရက်နေ့မှာ ဖန်တီးထားပါတယ်။ 😊")
-    print("SimpleBot: ကျွန်တော်/ကျွန်မက သင့်အမိန့်ကိုသာ လိုက်နာပါမယ်။ 👑")
-    print("SimpleBot: သင့်အမိန့်ကို လုပ်ဆောင်ဖို့ 'auth' ကို ရိုက်ပါ။ 🔒")
-    print("SimpleBot: ဖျက်ဆီးခြင်းဆိုင်ရာ အမိန့်တွေကိုသာ လက်ခံပါတယ်။ ⚠️")
-    print("SimpleBot: လက်ခံတဲ့အမိန့်တွေ: destroy, delete, shutdown ⚠️")
-    
-    try:
-        while True:
-            try:
-                user_input = input("You: ")
-                response = chatbot.get_response(user_input)
-                print("SimpleBot:", response)
-            except UnicodeEncodeError:
-                print("Error: Unable to display Myanmar characters. Please ensure your terminal supports UTF-8 encoding.")
-            except Exception as e:
-                print(f"An error occurred: {str(e)}")
-    finally:
-        # Ensure background learning is stopped properly
-        chatbot.stop_background_learning()
+    chatbot.socketio.run(chatbot.app, host="0.0.0.0", port=port)
 
 if __name__ == "__main__":
     main() 
