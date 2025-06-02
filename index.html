@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional AI Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Code Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <!-- Markdown Support -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Code Execution -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.0/ace.js"></script>
+    <!-- File Handling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Myanmar font -->
+    <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Tobi - Ai version 1.0</h1>
+            <div class="header-controls">
+                <div class="theme-toggle">
+                    <button id="theme-toggle" class="action-button" title="Toggle Theme">🌓</button>
+                </div>
+                <button id="login-button" class="action-button">Login</button>
+                <button id="logout-button" class="action-button" style="display:none;">Logout</button>
+            </div>
+        </div>
+        <div id="usage-counter" class="usage-counter"></div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                <div class="message-content">
+                    Hello! I'm your professional programming assistant. How can I help you today?
+                </div>
+            </div>
+        </div>
+        <div class="input-area">
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
+                <div class="input-actions">
+                    <input type="file" id="file-upload" accept=".txt,.js,.py,.html,.css,.json,.md" style="display: none;">
+                    <button id="upload-button" class="action-button" title="Upload File">📎</button>
+                </div>
+            </div>
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <!-- Google Sign-In Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2>Sign In</h2>
+            <div class="login-options">
+                <button id="google-signin" class="google-signin-button">
+                    <img src="https://www.google.com/favicon.ico" alt="Google">
+                    Sign in with Google
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+</body>
+</html> 
